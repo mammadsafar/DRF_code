@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8010:8000
+    # depends_on:
+    #   - db
+    environment:
+      - "DJANGO_SECRET_KEY=lkawrsfawerFAEWRfqwerakljfn23423142134123werqQWER"
+      - "DJANGO_DEBUG=True"
+      - "DJANGO_ZARINPAL_MERCHANT_ID=12314214115324543425324243"
+    # environment:
+    #   - "DJANGO_SECRET_KEY=${DOCKER_COMPOSE_DJANGO_SECRET_KEY}"
+    #   - "DJANGO_DEBUG=${DOCKER_COMPOSE_DJANGO_DEBUG}"
+    #   - "DJANGO_ZARINPAL_MERCHANT_ID=${DOCKER_COMPOSE_DJANGO_ZARINPAL_MERCHANT_ID}"
+
+  # db:
+  #   image: postgres:14
+  #   environment:
+  #     - "POSTGRES_HOST_AUTH_METHOD=trust"
